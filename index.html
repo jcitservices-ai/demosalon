@@ -69,6 +69,66 @@
       font-size: 0.9rem;
       color: #666;
     }
+
+    /* AI Pricing Table */
+    .ai-pricing-container {
+      max-width: 900px;
+      margin: 50px auto;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .ai-pricing-container h2 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      color: #ff5fa2;
+    }
+
+    .ai-pricing-table {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .ai-pricing-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 25px 20px;
+      width: 260px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.2s ease;
+    }
+
+    .ai-pricing-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .ai-pricing-card h3 {
+      color: #ff5fa2;
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+    }
+
+    .ai-pricing-card p {
+      font-size: 1rem;
+      margin: 8px 0;
+      color: #555;
+    }
+
+    .ai-note {
+      margin-top: 20px;
+      font-size: 0.9rem;
+      color: #888;
+    }
+
+    @media (max-width: 800px) {
+      .ai-pricing-table {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
   </style>
 </head>
 
@@ -96,11 +156,46 @@
         📞 0916-525-7683
       </div>
     </div>
-
-    <footer>
-      © 2025 JCIT Services · Demo Experience
-    </footer>
   </div>
+
+  <!-- AI Agent Pricing Table -->
+  <div class="ai-pricing-container">
+    <h2>JC AI Agent Pricing</h2>
+
+    <div class="ai-pricing-table">
+      <div class="ai-pricing-card">
+        <h3>Starter</h3>
+        <p>₱3,000 / month</p>
+        <p>1,000 prompts included</p>
+        <p>₱1 per extra prompt</p>
+        <p>- Basic inquiries<br>- Unlimited concurrent chats<br>- 24/7 support</p>
+      </div>
+
+      <div class="ai-pricing-card">
+        <h3>Growth</h3>
+        <p>₱5,000 / month</p>
+        <p>2,500 prompts included</p>
+        <p>₱1 per extra prompt</p>
+        <p>- Inquiries + appointment scheduling<br>- Unlimited concurrent chats<br>- 24/7 support</p>
+      </div>
+
+      <div class="ai-pricing-card">
+        <h3>Pro</h3>
+        <p>₱8,000 / month</p>
+        <p>5,000 prompts included</p>
+        <p>₱1 per extra prompt</p>
+        <p>- Inquiries, appointments, and call-backs<br>- Unlimited concurrent chats<br>- 24/7 support</p>
+      </div>
+    </div>
+
+    <p class="ai-note">
+      *₱2,000 setup fee per agent | 6-month minimum contract | Agent name customizable per business
+    </p>
+  </div>
+
+  <footer>
+    © 2025 JCIT Services · Demo Experience
+  </footer>
 
   <!-- JC IT Services Demo AI Widget -->
   <script
@@ -120,6 +215,5 @@
     data-auto-open="true"
     data-dynamic='{"demo": "true"}'
   ></script>
-
 </body>
 </html>
