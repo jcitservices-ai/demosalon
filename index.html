@@ -3,194 +3,239 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JCAI Demo Salon | JCIT Services</title>
+  <title>JC AI Demo: Hair and Beauty Salon</title>
 
   <style>
+    /* Textured Background */
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(135deg, #f8e1ec, #e0f2ff);
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background: url('https://www.transparenttextures.com/patterns/pw-maze-white.png') repeat;
       color: #333;
+      scroll-behavior: smooth;
     }
 
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 60px 20px;
+    /* Hero Banner */
+    .hero {
+      background: linear-gradient(to right, #ff9ecb, #ffe0f0);
+      padding: 80px 20px;
       text-align: center;
-    }
-
-    h1 {
-      font-size: 2.8rem;
-      margin-bottom: 10px;
-    }
-
-    h2 {
-      font-weight: 400;
-      color: #555;
-      margin-bottom: 30px;
-    }
-
-    .badge {
-      display: inline-block;
-      background: #ff5fa2;
       color: #fff;
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      margin-bottom: 20px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
     }
+
+    .hero h1 { font-size: 3rem; margin-bottom: 10px; }
+    .hero p { font-size: 1.5rem; margin-top: 0; }
+
+    .hero-buttons {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .hero-btn {
+      background-color: #ff5fa2;
+      color: #fff;
+      padding: 12px 22px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: transform 0.2s, background-color 0.2s;
+    }
+
+    .hero-btn:hover { background-color: #ff3f8b; transform: scale(1.05); }
+
+    /* Container */
+    .container { max-width: 900px; margin: 0 auto; padding: 50px 20px; text-align: center; }
 
     .card {
       background: #fff;
       border-radius: 16px;
       padding: 30px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
       margin-top: 40px;
+      text-align: left;
     }
 
-    .card p {
-      font-size: 1.05rem;
-      line-height: 1.6;
-    }
+    .card p { font-size: 1.05rem; line-height: 1.6; }
 
-    .contact {
-      margin-top: 30px;
-      font-size: 1rem;
-    }
-
-    .contact strong {
-      display: block;
-      margin-bottom: 8px;
-    }
-
-    footer {
-      margin-top: 60px;
-      font-size: 0.9rem;
-      color: #666;
-    }
+    /* Banners */
+    .section-banner { background: #ff5fa2; color: #fff; padding: 15px 20px; font-size: 1.4rem; border-radius: 10px; margin-bottom: 30px; display: inline-block; }
+    .benefits-banner { background: #6c5ce7; color: #fff; padding: 15px 20px; font-size: 1.4rem; border-radius: 10px; margin-bottom: 20px; display: inline-block; opacity:0; transform: translateY(20px); animation: fadeSlideUp 0.8s forwards; animation-delay:0.6s;}
 
     /* AI Pricing Table */
-    .ai-pricing-container {
-      max-width: 900px;
-      margin: 50px auto;
-      text-align: center;
-      padding: 0 20px;
-    }
-
-    .ai-pricing-container h2 {
-      font-size: 2rem;
-      margin-bottom: 30px;
-      color: #ff5fa2;
-    }
-
-    .ai-pricing-table {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-    }
-
+    .ai-pricing-table { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
     .ai-pricing-card {
-      background: #fff;
       border-radius: 16px;
       padding: 25px 20px;
       width: 260px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      color: #fff;
       text-align: center;
-      transition: transform 0.2s ease;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0;
+      animation: fadeSlideUp 0.8s forwards;
     }
+    .ai-pricing-card.starter { background-color: #ff7eb9; animation-delay: 0.1s; }
+    .ai-pricing-card.growth { background-color: #ff3f8b; animation-delay: 0.3s; }
+    .ai-pricing-card.pro { background-color: #c90064; animation-delay: 0.5s; }
+    .ai-pricing-card:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 12px 35px rgba(0,0,0,0.2); }
 
-    .ai-pricing-card:hover {
-      transform: translateY(-5px);
+    .ai-pricing-card h3 { margin-bottom: 15px; font-size: 1.5rem; }
+    .ai-pricing-card p { font-size: 1rem; margin: 8px 0; }
+
+    /* Simulate Chat Button */
+    .simulate-chat-btn {
+      margin-top: 15px;
+      background-color: #ffddf0;
+      color: #ff3f8b;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 25px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
     }
+    .simulate-chat-btn:hover { transform: scale(1.08); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
 
-    .ai-pricing-card h3 {
-      color: #ff5fa2;
-      margin-bottom: 15px;
-      font-size: 1.5rem;
-    }
+    .ai-note { margin-top: 20px; font-size: 0.9rem; color: #888; }
 
-    .ai-pricing-card p {
+    /* Benefits Table */
+    table { width: 100%; border-collapse: collapse; margin-bottom: 40px; opacity:0; transform: translateY(20px); animation: fadeSlideUp 0.8s forwards; animation-delay:0.6s; }
+    table th, table td { border: 1px solid #ddd; padding: 15px; text-align: center; }
+    table th { background-color: #ffe0f0; color: #ff5fa2; font-size: 1.1rem; }
+    table td { font-size: 1rem; }
+
+    /* Footer Contact Buttons */
+    .contact {
+      margin-top: 30px;
       font-size: 1rem;
-      margin: 8px 0;
-      color: #555;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
     }
+    .footer-btn { background-color: #ff5fa2; color: #fff; padding: 12px 22px; border-radius: 30px; text-decoration: none; font-weight: bold; transition: transform 0.2s, background-color 0.2s; }
+    .footer-btn:hover { background-color: #ff3f8b; transform: scale(1.05); }
 
-    .ai-note {
-      margin-top: 20px;
-      font-size: 0.9rem;
-      color: #888;
+    footer { margin-top: 60px; font-size: 0.9rem; color: #666; text-align: center; padding-bottom: 40px; }
+
+    /* Animation Keyframes */
+    @keyframes fadeSlideUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
 
     @media (max-width: 800px) {
-      .ai-pricing-table {
-        flex-direction: column;
-        align-items: center;
-      }
+      .ai-pricing-table { flex-direction: column; align-items: center; }
+      .contact { flex-direction: column; }
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
-    <span class="badge">Demo Agent</span>
 
-    <h1>JCAI Demo Salon</h1>
-    <h2>Built by JCIT Services</h2>
-
-    <div class="card">
-      <p>
-        This page showcases a <strong>demo AI salon assistant experience</strong> created by <strong>JCIT Services</strong>.  
-        The agent simulates answering questions, giving service information, and booking appointments.
-      </p>
-
-      <p>
-        ⚠️ <strong>Note:</strong> This is a demo agent only—no real appointments are booked.
-      </p>
-
-      <div class="contact">
-        <strong>Interested in your own AI agent or tech solutions?</strong>
-        Contact <strong>Jay – JCIT Services</strong><br />
-        📧 jayconcha9@gmail.com<br />
-        📞 0916-525-7683
-      </div>
+  <!-- Hero Banner -->
+  <div class="hero">
+    <h1>JC ai Demo Salon</h1>
+    <p>Hair and Beauty Salon – Built by JCIT Services</p>
+    <div class="hero-buttons">
+      <a href="mailto:jayconcha9@gmail.com" class="hero-btn">📧 Email Us</a>
+      <a href="tel:09165257683" class="hero-btn">📞 Call Us</a>
     </div>
   </div>
 
-  <!-- AI Agent Pricing Table -->
-  <div class="ai-pricing-container">
-    <h2>JC AI Agent Pricing</h2>
+  <div class="container">
 
+    <!-- Welcome Card -->
+    <div class="card">
+      <p>
+        Welcome to our demo ai salon assistant! Jane (or any customized name) can handle inquiries, appointments, and simulate call-backs. This is a <strong>demo agent</strong> experience.
+      </p>
+      <p>⚠️ Note: No real appointments are booked in this demo.</p>
+    </div>
+
+    <!-- AI Pricing Banner -->
+    <div class="section-banner">💖 AI Agent Pricing</div>
+
+    <!-- AI Pricing Table -->
     <div class="ai-pricing-table">
-      <div class="ai-pricing-card">
-        <h3>Starter</h3>
+      <div class="ai-pricing-card starter">
+        <h3>✨ Starter</h3>
         <p>₱3,000 / month</p>
         <p>1,000 prompts included</p>
         <p>₱1 per extra prompt</p>
         <p>- Basic inquiries<br>- Unlimited concurrent chats<br>- 24/7 support</p>
+        <button class="simulate-chat-btn" onclick="simulateChat()">💬 Simulate Chat</button>
       </div>
-
-      <div class="ai-pricing-card">
-        <h3>Growth</h3>
+      <div class="ai-pricing-card growth">
+        <h3>🌟 Growth</h3>
         <p>₱5,000 / month</p>
         <p>2,500 prompts included</p>
         <p>₱1 per extra prompt</p>
         <p>- Inquiries + appointment scheduling<br>- Unlimited concurrent chats<br>- 24/7 support</p>
+        <button class="simulate-chat-btn" onclick="simulateChat()">💬 Simulate Chat</button>
       </div>
-
-      <div class="ai-pricing-card">
-        <h3>Pro</h3>
+      <div class="ai-pricing-card pro">
+        <h3>💎 Pro</h3>
         <p>₱8,000 / month</p>
         <p>5,000 prompts included</p>
         <p>₱1 per extra prompt</p>
         <p>- Inquiries, appointments, and call-backs<br>- Unlimited concurrent chats<br>- 24/7 support</p>
+        <button class="simulate-chat-btn" onclick="simulateChat()">💬 Simulate Chat</button>
       </div>
     </div>
 
     <p class="ai-note">
       *₱2,000 setup fee per agent | 6-month minimum contract | Agent name customizable per business
     </p>
+
+    <!-- AI Benefits Banner -->
+    <div class="benefits-banner">🤖 AI Agent vs Live Agent Benefits</div>
+
+    <!-- Benefits Table -->
+    <table>
+      <tr>
+        <th>Feature</th>
+        <th>ai Agent</th>
+        <th>Live Agent</th>
+      </tr>
+      <tr>
+        <td>Availability</td>
+        <td>24/7 ✅</td>
+        <td>Limited ⏰</td>
+      </tr>
+      <tr>
+        <td>Cost</td>
+        <td>Fixed monthly fee 💵</td>
+        <td>Salary + benefits 💸</td>
+      </tr>
+      <tr>
+        <td>Concurrent Handling</td>
+        <td>Unlimited chats 📈</td>
+        <td>1 chat at a time 👥</td>
+      </tr>
+      <tr>
+        <td>Consistency</td>
+        <td>Always professional ✨</td>
+        <td>Varies by agent 🧑‍💼</td>
+      </tr>
+      <tr>
+        <td>Scalability</td>
+        <td>Instant scaling 🚀</td>
+        <td>Requires hiring new staff 🏢</td>
+      </tr>
+    </table>
+
+    <!-- Footer Contact Buttons -->
+    <div class="contact">
+      <a href="mailto:jayconcha9@gmail.com" class="footer-btn">📧 Email Us</a>
+      <a href="tel:09165257683" class="footer-btn">📞 Call Us</a>
+    </div>
+
   </div>
 
   <footer>
@@ -205,15 +250,35 @@
     data-public-key="public_key_0b7796c09905009f2051b"
     data-agent-id="agent_e282308196d235afb8859289b4"
     data-agent-version="v1demo"
-    data-title="JCAI Demo Salon – AI Agent"
+    data-title="JC ai Demo Salon – ai Agent"
     data-bot-name="Jane"
     data-logo-url=""
     data-color="#ff5fa2"
-    data-popup-message="Hi babes! 💕 I’m Jane, your chic AI salon assistant. This is a demo experience—pero I can show you how booking works ✨"
+    data-popup-message="Hi babes! 💕 I’m Jane, your chic ai salon assistant. This is a demo experience—pero I can show you how booking works ✨"
     data-show-ai-popup="true"
     data-show-ai-popup-time="1"
     data-auto-open="true"
     data-dynamic='{"demo": "true"}'
   ></script>
+
+  <!-- Simulate Chat Script -->
+  <script>
+    function simulateChat() {
+      if (window.retellWidget && typeof window.retellWidget.open === "function") {
+        window.retellWidget.open();
+      } else {
+        alert("AI widget not loaded yet. Please wait a moment.");
+      }
+    }
+
+    // Scroll reveal for additional smooth animation
+    const scrollElements = document.querySelectorAll('.ai-pricing-card, .benefits-banner, table');
+    const elementInView = (el, dividend = 1) => el.getBoundingClientRect().top <= (window.innerHeight || document.documentElement.clientHeight) / dividend;
+    const displayScrollElement = (el) => { el.style.opacity = 1; el.style.transform = 'translateY(0)'; };
+    const handleScrollAnimation = () => { scrollElements.forEach(el => { if (elementInView(el, 1.25)) displayScrollElement(el); }); };
+    window.addEventListener('scroll', handleScrollAnimation);
+    window.addEventListener('load', handleScrollAnimation);
+  </script>
+
 </body>
 </html>
