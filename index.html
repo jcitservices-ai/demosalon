@@ -19,18 +19,37 @@
     .hero {
       background: linear-gradient(to right, #ff9ecb, #ffe0f0);
       padding: 80px 20px;
-      text-align: center;
       color: #fff;
       box-shadow: 0 8px 30px rgba(0,0,0,0.2);
     }
 
-    .hero h1 { font-size: 3rem; margin-bottom: 10px; }
-    .hero p { font-size: 1.5rem; margin-top: 0; }
+    .hero-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .hero-text {
+      max-width: 500px;
+      text-align: left;
+    }
+
+    .hero-text h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    .hero-text p {
+      font-size: 1.5rem;
+      margin-top: 0;
+    }
 
     .hero-buttons {
       margin-top: 20px;
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
       gap: 15px;
       flex-wrap: wrap;
     }
@@ -46,6 +65,27 @@
     }
 
     .hero-btn:hover { background-color: #ff3f8b; transform: scale(1.05); }
+
+    /* Hero Avatar */
+    @keyframes float {
+      0%   { transform: translateY(0px); }
+      50%  { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+
+    @keyframes glowPulse {
+      0%   { box-shadow: 0 4px 15px rgba(0,0,0,0.2), 0 0 30px 8px rgba(255, 95, 162, 0.6); }
+      50%  { box-shadow: 0 4px 15px rgba(0,0,0,0.2), 0 0 40px 12px rgba(255, 95, 162, 0.8); }
+      100% { box-shadow: 0 4px 15px rgba(0,0,0,0.2), 0 0 30px 8px rgba(255, 95, 162, 0.6); }
+    }
+
+    .hero-avatar img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 4px solid #fff;
+      animation: float 3s ease-in-out infinite, glowPulse 3s ease-in-out infinite;
+    }
 
     /* Container */
     .container { max-width: 900px; margin: 0 auto; padding: 50px 20px; text-align: center; }
@@ -132,6 +172,8 @@
     @media (max-width: 800px) {
       .ai-pricing-table { flex-direction: column; align-items: center; }
       .contact { flex-direction: column; }
+      .hero-content { flex-direction: column; text-align: center; }
+      .hero-text { text-align: center; }
     }
   </style>
 </head>
@@ -140,11 +182,18 @@
 
   <!-- Hero Banner -->
   <div class="hero">
-    <h1>JC ai Demo Salon</h1>
-    <p>Hair and Beauty Salon – Built by JCIT Services</p>
-    <div class="hero-buttons">
-      <a href="mailto:jayconcha9@gmail.com" class="hero-btn">📧 Email Us</a>
-      <a href="tel:09165257683" class="hero-btn">📞 Call Us</a>
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1>JC ai Demo Salon</h1>
+        <p>Hair and Beauty Salon – Built by JCIT Services</p>
+        <div class="hero-buttons">
+          <a href="mailto:jayconcha9@gmail.com" class="hero-btn">📧 Email Us</a>
+          <a href="tel:09165257683" class="hero-btn">📞 Call Us</a>
+        </div>
+      </div>
+      <div class="hero-avatar">
+        <img src="assets/avatar.png" alt="Jane AI Avatar" />
+      </div>
     </div>
   </div>
 
